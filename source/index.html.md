@@ -1,30 +1,12 @@
 ---
-title: Documentação da API Autolac para Parceiros
-
-language_tabs: # Define as abas de linguagem no painel direito
-  - json: Resposta
-
+title: Especificação da API Autolac para parceiros
+language_tabs:
+  - json: JSON
 toc_footers:
-  - <a href='#'>Voltar para o Topo</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentação criada com Slate</a>
-
-# Adicione todos os seus blocos de código que estarão no painel direito aqui
-# Isso ajuda o Slate a saber quais linguagens destacar
-includes:
-  - errors
-
+  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 search: true
-
 code_clipboard: true
-
-meta:
-  - name: description
-    content: Descreve as regras para integração entre sistemas parceiros e o Autolac
 ---
-
-[TOC]
-<div style="page-break-after: always"></div>
-
 
 ## Controle de versão da documentação
 
@@ -32,8 +14,6 @@ meta:
 | :----- | :---------------- | :--------------- | :----------------------------------------------------------- |
 | 1.0.0  |  20/05/2025     | Lucas Cardoso | Construção. |
 | 1.0.1 | 01/07/2025 | Lucas Cardoso | Adicionado informação sobre as credenciais de acesso a API. |
-
-<div style="page-break-after: always"></div>
 
 ## Result
 
@@ -68,7 +48,6 @@ meta:
 | message    | string  |  Não         | Mensagem descritiva sobre o resultado da operação, fornecendo detalhes em caso de sucesso ou erro.                                       |
 | data       | object  | Não         | Contém os dados de retorno da operação em caso de sucesso. A estrutura deste objeto varia conforme o endpoint (ver no retorno de cada endpoint). |
 
-<div style="page-break-after: always"></div>
 ## Endpoints
 
 ### Autenticação (Login)
@@ -170,7 +149,6 @@ meta:
 | Tipo do laboratório de apoio não encontrado.             | O Tipo de integração não está configurado no cadastro do apoiado. |
 | Token inválido.                                          | Erro durante a geração/validação do token.                   |
 
-<div style="page-break-after: always"></div>
 ### Exames
 
 #### Visão geral
@@ -399,7 +377,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
 ##### Nota sobre versionamento
 - Se um filtro de versão (exameCtrlVersao ou componenteCtrlVersao) for utilizado na requisição, a API retornará apenas os exames que foram alterados (ou tiveram componentes alterados) desde a versão informada. Um exame é retornado por completo, incluindo todos os seus componentes (mesmo os não alterados), com seus respectivos ctrlVersao, caso ele ou algum de seus componentes tenha sido modificado após o ctrlVersao do exameCtrlVersao fornecido no filtro.
 
-<div style="page-break-after: always"></div>
 ### Pedidos
 
 #### Visão geral
@@ -492,7 +469,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
 | codigoLote    | integer | Sim         | Número sequencial que identifica o lote de pedidos sendo enviado.                |                       |
 | pedidos       | array   | Sim         | Lista contendo um ou mais pedidos individuais.                                   | [Pedido](#pedido) |
 
----
 ##### Estruturas de Dados (Corpo da Requisição)
 
 ###### Pedido
@@ -640,7 +616,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
   
   - <sup>1</sup>: Obrigatório de acordo com a parametrização do laboratório (Autolac).
 
----
 #### Response
 
 ##### Sucesso (200 OK)
@@ -782,7 +757,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
     }
 }
 ```
----
 ##### Estruturas de Dados (Corpo da Resposta - campo data)
 
 ###### PedidoRetorno
@@ -852,7 +826,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
   | etiqueta   | string | Sim         | Conteúdo da etiqueta para impressão (geralmente em formato ZPL ou EPL).                |
   | exames     | string | Sim         | Lista de exames (códigos/siglas) contidos neste recipiente/etiqueta.                   |
 
----
 ##### Falha (Outros Status Codes)
 - Além do sucesso (200 OK, mesmo com falhas parciais no lote), a API pode retornar os seguintes códigos de erro principais, seguindo o [Result](#result):
   - **400 Bad Request**: A requisição está malformada (ex: JSON inválido).
@@ -978,7 +951,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
 | Pedido já inserido no lote de retorno.                                          | Erro interno ao construir o objeto de retorno.                                                                   |
 | *Outras exceções inesperadas*                                                   | Erros não previstos capturados pela aplicação.                                                                   |
 
-<div style="page-break-after: always"></div>
 ### Resultados
 
 #### Visão geral
@@ -1021,7 +993,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
 | codigoLote    | integer | Sim         | Número sequencial que identifica o lote de pedidos previamente enviado e que está sendo consultado. |                                         |
 | protocolos    | array   | Sim         | Lista contendo um ou mais protocolos individuais a serem consultados. | [ProtocoloConsulta](#protocoloconsulta) |
 
----
 ##### Estruturas de Dados (Corpo da Requisição)
 
 ###### ProtocoloConsulta
@@ -1058,7 +1029,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
   | Nome                 | Tipo   | Obrigatório | Descrição                                                                                                  |
   | -------------------- | ------ | ----------- | ---------------------------------------------------------------------------------------------------------- |
   | codigoExameApoio   | string | Sim         | Código do exame no laboratório de apoio.                                                                   |
----
 
 #### Response
 
@@ -1210,7 +1180,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
   }
 }
 ```
----
 ##### Estruturas de Dados (Corpo da Resposta - campo data)
 
 ###### ProtocoloRetorno
@@ -1387,7 +1356,6 @@ https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&Pa
   | conselhoUf   | string | Não         | UF do conselho profissional.                    |
   | conselhoNumero| string | Não         | Número de registro no conselho profissional.    |
 
----
 ##### Falha (Outros Status Codes)
 - Além do sucesso (200 OK, mesmo com falhas parciais no lote), a API pode retornar os seguintes códigos de erro principais, seguindo o [Result](#result):
   - **400 Bad Request**: A requisição está malformada (ex: JSON inválido).
