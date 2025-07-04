@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta
-            name="description"
-            content="Documentation for the Kittn API"
-        >
-    <title>API Reference</title>
+    <title>API Documentation</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -288,14 +284,11 @@
     </style>
     <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-024da600.js"></script>
+      <script src="javascripts/all_nosearch-53bdb4f3.js"></script>
 
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -304,295 +297,2081 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-          </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <p>[TOC]
+<div style="page-break-after: always"></div></p>
+<h2 id='controle-de-versao-da-documentacao'>Controle de versão da documentação</h2>
+<table><thead>
+<tr>
+<th style="text-align: left">Versão</th>
+<th style="text-align: left">Data de liberação</th>
+<th style="text-align: left">Autor</th>
+<th style="text-align: left">Observação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">1.0.0</td>
+<td style="text-align: left">20/05/2025</td>
+<td style="text-align: left">Lucas Cardoso</td>
+<td style="text-align: left">Construção.</td>
+</tr>
+<tr>
+<td style="text-align: left">1.0.1</td>
+<td style="text-align: left">01/07/2025</td>
+<td style="text-align: left">Lucas Cardoso</td>
+<td style="text-align: left">Adicionado informação sobre as credenciais de acesso a API.</td>
+</tr>
+</tbody></table>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<div style="page-break-after: always"></div>
+<h2 id='result'>Result</h2>
+<ul>
+<li>Objeto padrão utilizado para encapsular as respostas da API Autolac. Indica o status da operação e contém os dados de retorno ou mensagens de erro.
+### Exemplo (Sucesso)
+<code>json
+{
+&quot;statusCode&quot;: 200,
+&quot;success&quot;: true,
+&quot;message&quot;: &quot;Mensagem descritiva de sucesso.&quot;,
+&quot;data&quot;: {
+// O conteúdo aqui varia dependendo do endpoint e do resultado da operação.
+}
+}
+</code></li>
+</ul>
+<h3 id='exemplo-erro'>Exemplo (Erro)</h3><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mensagem descritiva do erro."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='propriedades'>Propriedades</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">statusCode</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Código de status HTTP que reflete o resultado geral da operação.</td>
+</tr>
+<tr>
+<td style="text-align: left">success</td>
+<td style="text-align: left">boolean</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Indica se a operação foi bem-sucedida (true) ou não (false).</td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Mensagem descritiva sobre o resultado da operação, fornecendo detalhes em caso de sucesso ou erro.</td>
+</tr>
+<tr>
+<td style="text-align: left">data</td>
+<td style="text-align: left">object</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Contém os dados de retorno da operação em caso de sucesso. A estrutura deste objeto varia conforme o endpoint (ver no retorno de cada endpoint).</td>
+</tr>
+</tbody></table>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div style="page-break-after: always"></div>
+<h2 id='endpoints'>Endpoints</h2><h3 id='autenticacao-login'>Autenticação (Login)</h3>
+<ul>
+<li>Autentica o laboratório apoiado na API, retornando um token de acesso JWT para ser usado em chamadas subsequentes.</li>
+<li>As credenciais de acesso da API devem ser solicitadas ao nosso setor comercial.</li>
+<li>Efetuar login:
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<ul>
+<li>Path: /Api/Inter-Autolac/Login</li>
+<li>Método: POST</li>
+<li>Content-Type: application/json</li>
+<li>Autenticação: Nenhuma (este endpoint é usado para obter o token).</li>
+</ul></li>
+</ul>
+<h4 id='request'>Request</h4><h5 id='visao-geral'>Visão geral</h5>
+<ul>
+<li>Objeto de dados utilizado no corpo da requisição do endpoint de Login (POST /Api/Inter-Autolac/Login) para autenticar o laboratório apoiado.</li>
+</ul>
+<h5 id='exemplo'>Exemplo</h5><div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"apoiadoId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"senha"</span><span class="w">
   </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h5 id='propriedades-2'>Propriedades</h5>
+<table><thead>
+<tr>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">apoiadoId</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Número de identificação único do laboratório apoiado no sistema Autolac (apoio).</td>
+</tr>
+<tr>
+<td style="text-align: left">senha</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Senha de autenticação do laboratório apoiado (Deve ser enviada em Base64).</td>
+</tr>
+</tbody></table>
+<h4 id='response'>Response</h4><h5 id='sucesso-200-ok'>Sucesso (200 OK)</h5>
+<ul>
+<li>Autenticação bem-sucedida.</li>
+</ul>
+<h6 id='visao-geral-campo-data'>Visão geral (campo data)</h6>
+<ul>
+<li>O campo data do <a href="#result">Result</a> contém um objeto com o token de acesso e informações sobre sua validade.</li>
+</ul>
+<h6 id='exemplo-campo-data'>Exemplo (campo data)</h6><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-26T10:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-26T11:00:00Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Login realizado com sucesso."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h6 id='propriedades-campo-data'>Propriedades (campo data)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">created</td>
+<td style="text-align: left">date-time</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Data e hora de geração do token (UTC).</td>
+</tr>
+<tr>
+<td style="text-align: left">expiration</td>
+<td style="text-align: left">date-time</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Data e hora de expiração do token (UTC).</td>
+</tr>
+<tr>
+<td style="text-align: left">accessToken</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">O token de acesso (JWT) a ser usado no cabeçalho Authorization: Bearer <token> das próximas requisições.</td>
+</tr>
+<tr>
+<td style="text-align: left">message</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Mensagem indicando o status da autenticação.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Exemplo Completo (Response 200 OK):</strong>
+<code>json
+{
+    &quot;statusCode&quot;: 200,
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Autenticado com sucesso.&quot;,
+    &quot;data&quot;: {
+        &quot;created&quot;: &quot;2024-10-26T10:00:00Z&quot;,
+        &quot;expiration&quot;: &quot;2024-10-26T11:00:00Z&quot;,
+        &quot;accessToken&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&quot;,
+        &quot;message&quot;: &quot;Login válido.&quot;
+    }
+}
+</code></p>
+<h5 id='falha-outros-status-codes'>Falha (Outros Status Codes)</h5>
+<ul>
+<li>A API pode retornar os seguintes códigos de erro, seguindo o <a href="#result">Result</a>:
+
+<ul>
+<li><strong>404 Not Found</strong>: Falha na autenticação (credenciais inválidas, apoiadoId não encontrado, senha não cadastrada).</li>
+<li>Content: application/json</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 404,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Dados de login inválidos.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+</ul></li>
+</ul>
+<h5 id='mensagens-de-retorno'>Mensagens de retorno</h5>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Login válido.</td>
+<td style="text-align: left">Autenticação bem-sucedida.</td>
+</tr>
+<tr>
+<td style="text-align: left">ID do Apoiado não informado.</td>
+<td style="text-align: left">O campo apoiadoId não foi enviado ou é inválido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Senha do Apoiado não informada.</td>
+<td style="text-align: left">O campo senha não foi enviado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Apoiado não encontrado.</td>
+<td style="text-align: left">O apoiadoId fornecido não existe.</td>
+</tr>
+<tr>
+<td style="text-align: left">Senha do Apoiado não cadastrada.</td>
+<td style="text-align: left">O Apoiado existe, mas não tem senha configurada.</td>
+</tr>
+<tr>
+<td style="text-align: left">Dados de login inválidos.</td>
+<td style="text-align: left">A senha fornecida está incorreta.</td>
+</tr>
+<tr>
+<td style="text-align: left">O apoiado informado {0} não está ativo para integrar via API no Autolac.</td>
+<td style="text-align: left">Laboratório apoiado não configurado para integração API.</td>
+</tr>
+<tr>
+<td style="text-align: left">Tipo do laboratório de apoio não encontrado.</td>
+<td style="text-align: left">O Tipo de integração não está configurado no cadastro do apoiado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Token inválido.</td>
+<td style="text-align: left">Erro durante a geração/validação do token.</td>
+</tr>
+</tbody></table>
+
+<div style="page-break-after: always"></div>
+<h3 id='exames'>Exames</h3><h4 id='visao-geral-2'>Visão geral</h4>
+<ul>
+<li>Consulta o cadastro de exames e seus componentes do laboratório de apoio, permitindo ao laboratório apoiado realizar o De/Para de exames.</li>
+<li>Retorna apenas exames autorizados para o laboratório apoiado (identificado pelo token JWT).</li>
+<li>Permite filtrar por ID do exame/componente e por versão de controle para obter apenas dados novos ou alterados desde a última consulta.</li>
+<li>Consulta de exames:
+
+<ul>
+<li>Path: /Api/Inter-Autolac/Exames</li>
+<li>Método: GET</li>
+<li>Autenticação: Requer Token JWT (Cabeçalho Authorization: Bearer <token>)</li>
+</ul></li>
+</ul>
+<h4 id='request-2'>Request</h4>
+<ul>
+<li>Observação: Por ser uma requisição GET por query, não há corpo (body) na requisição.</li>
+</ul>
+<h5 id='parametros-da-query'>Parâmetros da Query</h5>
+<ul>
+<li>A requisição é feita via método GET e os filtros são passados como parâmetros na query string.</li>
+<li>A consulta retorna apenas exames que estão autorizados para o laboratório apoiado identificado no token JWT.</li>
+</ul>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parâmetro</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+<th style="text-align: left">Exemplo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">exameId</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Filtra pelo ID específico do exame.</td>
+<td style="text-align: left">HEMO</td>
+</tr>
+<tr>
+<td style="text-align: left">componenteId</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Filtra por um ID de componente específico.</td>
+<td style="text-align: left">123</td>
+</tr>
+<tr>
+<td style="text-align: left">exameCtrlVersao</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Filtra por exames com versão de controle maior que a informada (timestamp).</td>
+<td style="text-align: left">1678886400000</td>
+</tr>
+<tr>
+<td style="text-align: left">componenteCtrlVersao</td>
+<td style="text-align: left">long</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Filtra por componentes com versão de controle maior que a informada (timestamp).</td>
+<td style="text-align: left">1678886400000</td>
+</tr>
+<tr>
+<td style="text-align: left">pageNumber</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Número da página desejada (padrão: 1).</td>
+<td style="text-align: left">2</td>
+</tr>
+<tr>
+<td style="text-align: left">pageSize</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Quantidade de registros por página (padrão definido no sistema).</td>
+<td style="text-align: left">50</td>
+</tr>
+</tbody></table>
+<h5 id='exemplo-de-url-de-requisicao'>Exemplo de URL de requisição</h5><div class="highlight"><pre class="highlight plaintext"><code>https://[endereco-api]/Api/Inter-Autolac/Exames?ExameCtrlVersao=1678886400000&amp;PageSize=20
+</code></pre></div><h4 id='response-2'>Response</h4><h5 id='sucesso-200-ok-2'>Sucesso (200 OK)</h5>
+<ul>
+<li>Consulta realizada com sucesso. Retorna uma lista paginada de exames autorizados que correspondem aos filtros.</li>
+<li>Content-Type: application/json</li>
+<li>Header X-Pagination: Contém metadados da paginação.
+<strong>Exemplo X-Pagination:</strong>
+<code>json
+{
+&quot;TotalCount&quot;: 150,
+&quot;PageSize&quot;: 20,
+&quot;CurrentPage&quot;: 1,
+&quot;TotalPages&quot;: 8,
+&quot;HasNext&quot;: true,
+&quot;HasPrevious&quot;: false
+}
+</code>
+<strong>Propriedades X-Pagination:</strong></li>
+</ul>
+
+<p>| Nome        | Tipo    | Descrição                                           |
+  | :---------- | :------ | :-------------------------------------------------- |
+  | TotalCount  | integer | Número total de itens disponíveis sem paginação.    |
+  | PageSize    | integer | Número máximo de itens por página.                  |
+  | CurrentPage | integer | Número da página atual retornada.                   |
+  | TotalPages  | integer | Número total de páginas disponíveis.                |
+  | HasNext     | boolean | Indica se existe uma próxima página (true/false). |
+  | HasPrevious | boolean | Indica se existe uma página anterior (true/false).|</p>
+<h6 id='visao-geral-campo-data-2'>Visão geral (campo data)</h6>
+<ul>
+<li>O campo data do <a href="#result">Result</a> contém uma lista (array) de objetos ExameAutorizado. Cada objeto representa um exame autorizado para o laboratório apoiado, com seus respectivos componentes.</li>
+</ul>
+<h6 id='exemplo-campo-data-2'>Exemplo (campo data)</h6><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"exameId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMOG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMOGRAMA COMPLETO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctrlVersao"</span><span class="p">:</span><span class="w"> </span><span class="mi">34001</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"integracaoId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bloqueado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bloqueadoTemp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resultadoEmPdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"componentes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"componenteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"modoPreenchimentoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informado"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERITROCITOS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"formatoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Numérico"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sigla"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERI"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mascara"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZZZ"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ctrlVersao"</span><span class="p">:</span><span class="w"> </span><span class="mi">38001</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+      </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">outros</span><span class="w"> </span><span class="err">componentes</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">outros</span><span class="w"> </span><span class="err">exames</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+</span></code></pre></div><h6 id='estruturas-de-dados-campo-data'>Estruturas de Dados (campo data)</h6>
+<ul>
+<li><h6 id='exame'><strong>Exame</strong></h6>
+<ul>
+<li>Representa um exame retornado pela consulta da integração. Contém informações básicas do exame e seus componentes.</li>
+<li><strong>Propriedades:</strong>
+| Nome           | Tipo    | Obrigatório | Descrição                                                                 | Modelo Relacionado          |
+| :------------- | :------ | :---------- | :------------------------------------------------------------------------ | :-------------------------- |
+| exameId      | string  | Sim         | Identificador único do exame (Sigla/Código).                              |                             |
+| descricao    | string  | Sim         | Nome/Descrição principal do exame.                                        |                             |
+| ctrlVersao   | integer | Sim         | Timestamp da última atualização do exame.                                 |                             |
+| integracaoId | integer | Sim         | ID de integração.                                                         |                             |
+| bloqueado    | string  | Sim         | Indica se o exame está bloqueado permanentemente.                         |                             |
+| bloqueadoTemp| string  | Sim         | Indica se o exame está bloqueado temporariamente.                         |                             |
+| resultadoEmPdf| string  | Sim         | Indica se o exame está configurado para receber resultados em PDF.        |                             |
+| componentes  | array   | Sim         | Lista dos componentes que formam o exame.                                 | <a href="#componente">Componente</a> |</li>
+</ul></li>
+<li><h6 id='componente'><strong>Componente</strong></h6>
+<ul>
+<li>Representa um componente de um exame retornado pela consulta da integração InterAutolac.</li>
+<li><strong>Propriedades:</strong></li>
+</ul>
+
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td style="text-align: left">componenteId</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Identificador único do componente.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td style="text-align: left">modoPreenchimentoResultado</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Indica o tipo do resultado esperado para o componente. (Informado, Calculado, Inform/Calc)</td>
+</tr>
+<tr>
+<td style="text-align: left">descricao</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Nome/Descrição do componente.</td>
+</tr>
+<tr>
+<td style="text-align: left">formatoResultado</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Indica o tipo do resultado. (Numérico, Descrição Digitada, Descrição Padrão, Germe, Parasita, Código/Descrição, Texto Digitado, Texto Padrão, Texto Formatado, Antimicrobiano, Imagem)</td>
+</tr>
+<tr>
+<td style="text-align: left">sigla</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Sigla do componente.</td>
+</tr>
+<tr>
+<td style="text-align: left">mascara</td>
+<td style="text-align: left">string</td>
+<td style="text-align: left">Não</td>
+<td style="text-align: left">Máscara de formatação para resultados numéricos.</td>
+</tr>
+<tr>
+<td style="text-align: left">ctrlVersao</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Timestamp da última atualização do componente.</td>
+</tr>
+</tbody></table></li>
+</ul>
+
+<p><strong>Exemplo Completo (Response 200 OK):</strong></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Requisição processada com sucesso."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"exameId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMOG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMOGRAMA COMPLETO"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ctrlVersao"</span><span class="p">:</span><span class="w"> </span><span class="mi">34001</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"integracaoId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bloqueado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bloqueadoTemp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"resultadoEmPdf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"componentes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"componenteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"modoPreenchimentoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informado"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERITROCITOS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"formatoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Numérico"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sigla"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ERI"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"mascara"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ZZZ"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"ctrlVersao"</span><span class="p">:</span><span class="w"> </span><span class="mi">38001</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">outros</span><span class="w"> </span><span class="err">componentes</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">outros</span><span class="w"> </span><span class="err">exames</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h5 id='falha-outros-status-codes-2'>Falha (Outros Status Codes)</h5>
+<ul>
+<li>A API pode retornar os seguintes códigos de erro, seguindo o <a href="#result">Result</a>:
+
+<ul>
+<li><strong>401 Unauthorized</strong>: Token JWT ausente, inválido ou expirado.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 401,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Unauthorized&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>403 Forbidden</strong>: O usuário autenticado não tem permissão para a operação.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 403,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Acesso Negado&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>404 Not Found</strong>: Recurso não encontrado. Pode indicar que o laboratório apoiado (extraído do token) não existe ou que a consulta não retornou resultados para os filtros fornecidos.</li>
+<li>Exemplo (Consulta não retornou resultados):
+<code>json
+{
+  &quot;statusCode&quot;: 404,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Consulta não retornou resultados.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>422 Unprocessable Entity</strong>: Erro na validação dos parâmetros da requisição (ex: tipo de dado incorreto).</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 422,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Parâmetro(s) de consulta inválido(s).&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>500 Internal Server Error</strong>: Falha inesperada durante o processamento no servidor.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 500,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Ocorreu um erro interno no servidor.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+</ul></li>
+</ul>
+<h5 id='mensagens-de-retorno-2'>Mensagens de Retorno</h5>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Requisição processada com sucesso.</td>
+<td style="text-align: left">A consulta foi bem-sucedida e retornou dados (ou uma lista vazia se nenhum item corresponder aos filtros).</td>
+</tr>
+<tr>
+<td style="text-align: left">Unauthorized</td>
+<td style="text-align: left">Token JWT ausente, inválido ou expirado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Acesso Negado</td>
+<td style="text-align: left">O usuário autenticado não tem permissão para a operação.</td>
+</tr>
+<tr>
+<td style="text-align: left">Laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O ID do laboratório apoiado extraído do token não existe no cadastro.</td>
+</tr>
+<tr>
+<td style="text-align: left">Consulta não retornou resultados.</td>
+<td style="text-align: left">Nenhum exame autorizado encontrado para os filtros fornecidos (ou nenhuma alteração desde a versão informada).</td>
+</tr>
+<tr>
+<td style="text-align: left">Parâmetro(s) de consulta inválido(s).</td>
+<td style="text-align: left">Erro na validação dos parâmetros da requisição (ex: tipo de dado incorreto). Mensagem específica pode variar.</td>
+</tr>
+<tr>
+<td style="text-align: left">Ocorreu um erro interno no servidor.</td>
+<td style="text-align: left">Falha inesperada durante o processamento no servidor.</td>
+</tr>
+<tr>
+<td style="text-align: left">Identificação do laboratório apoiado não encontrado no contexto da requisição HTTP.</td>
+<td style="text-align: left">Erro interno ao tentar extrair o ID do apoiado do token JWT.</td>
+</tr>
+</tbody></table>
+<h5 id='nota-sobre-versionamento'>Nota sobre versionamento</h5>
+<ul>
+<li>Se um filtro de versão (exameCtrlVersao ou componenteCtrlVersao) for utilizado na requisição, a API retornará apenas os exames que foram alterados (ou tiveram componentes alterados) desde a versão informada. Um exame é retornado por completo, incluindo todos os seus componentes (mesmo os não alterados), com seus respectivos ctrlVersao, caso ele ou algum de seus componentes tenha sido modificado após o ctrlVersao do exameCtrlVersao fornecido no filtro.</li>
+</ul>
+
+<div style="page-break-after: always"></div>
+<h3 id='pedidos'>Pedidos</h3><h4 id='visao-geral-3'>Visão geral</h4>
+<ul>
+<li>Envia um lote de pedidos do laboratório apoiado para o Autolac para integração e geração de etiquetas.</li>
+<li>Envio de pedidos:
+
+<ul>
+<li>Path: /Api/Inter-Autolac/Pedidos</li>
+<li>Método: POST</li>
+<li>Content-Type: application/json</li>
+<li>Autenticação: Requer Token JWT (Cabeçalho Authorization: Bearer <token>)</li>
+</ul></li>
+</ul>
+<h4 id='request-3'>Request</h4><h5 id='visao-geral-corpo-da-requisicao'>Visão geral (Corpo da Requisição)</h5>
+<ul>
+<li>O corpo da requisição deve ser um objeto PedidoLote, que representa um lote de pedidos enviados pelo laboratório apoiado.</li>
+</ul>
+<h5 id='exemplo-corpo-da-requisicao-pedidolote'>Exemplo (Corpo da Requisição - PedidoLote)</h5><div class="highlight"><pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="mi">2024070401</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"pedidos"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"local"</span><span class="p">:</span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"protocolo"</span><span class="p">:</span><span class="mi">987654</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"atendimento"</span><span class="p">:</span><span class="mi">555111</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"data"</span><span class="p">:</span><span class="s2">"2024-07-04"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"hora"</span><span class="p">:</span><span class="s2">"09:15:00"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"setorHospitalar"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"leito"</span><span class="p">:</span><span class="s2">"201A"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"paciente"</span><span class="p">:{</span><span class="w">
+            </span><span class="nl">"codigo"</span><span class="p">:</span><span class="mi">112233</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nome"</span><span class="p">:</span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataNascimento"</span><span class="p">:</span><span class="s2">"1990-05-20"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"idade"</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sexo"</span><span class="p">:</span><span class="s2">"Masculino"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nacionalidade"</span><span class="p">:</span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"peso"</span><span class="p">:</span><span class="mf">80.5</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"altura"</span><span class="p">:</span><span class="mf">1.75</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataUltMens"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"prontuario"</span><span class="p">:</span><span class="s2">"PAC9988"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"cpf"</span><span class="p">:</span><span class="s2">"111.222.333-44"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nomeMae"</span><span class="p">:</span><span class="s2">"Maria Oliveira Silva"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"observacao"</span><span class="p">:</span><span class="s2">"Paciente relata dor abdominal."</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"guias"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"numeracao"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"convenio"</span><span class="p">:</span><span class="s2">"CONV002"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"plano"</span><span class="p">:</span><span class="s2">"PLAN002"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"dataPedido"</span><span class="p">:</span><span class="s2">"2024-07-04"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"solicitante"</span><span class="p">:{</span><span class="w">
+                  </span><span class="nl">"nome"</span><span class="p">:</span><span class="s2">"Dra. Ana Souza"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"conselho"</span><span class="p">:</span><span class="s2">"CRM"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"ufConselho"</span><span class="p">:</span><span class="s2">"RJ"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"numeroConselho"</span><span class="p">:</span><span class="s2">"54321"</span><span class="w">
+               </span><span class="p">},</span><span class="w">
+               </span><span class="nl">"guiaExames"</span><span class="p">:[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"codigoExameApoio"</span><span class="p">:</span><span class="s2">"GLI"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"descricaoExameApoio"</span><span class="p">:</span><span class="s2">"Glicose"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"dataColeta"</span><span class="p">:</span><span class="s2">"2024-07-04"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"horaColeta"</span><span class="p">:</span><span class="s2">"09:20:00"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"material"</span><span class="p">:</span><span class="s2">"Soro"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"prioridade"</span><span class="p">:</span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"faturaExame"</span><span class="p">:</span><span class="s2">"T"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"codigoExameApoio"</span><span class="p">:</span><span class="s2">"HEMO"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"descricaoExameApoio"</span><span class="p">:</span><span class="s2">"Hemograma Completo"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"dataColeta"</span><span class="p">:</span><span class="s2">"2024-07-04"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"horaColeta"</span><span class="p">:</span><span class="s2">"09:20:00"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"material"</span><span class="p">:</span><span class="s2">"Sangue Total EDTA"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"prioridade"</span><span class="p">:</span><span class="s2">"U"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"faturaExame"</span><span class="p">:</span><span class="s2">"F"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h5 id='propriedades-corpo-da-requisicao-pedidolote'>Propriedades (Corpo da Requisição - PedidoLote)</h5>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+<th>Modelo Relacionado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>codigoApoiado</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número de identificação único do laboratório apoiado no sistema Autolac (apoio).</td>
+<td></td>
+</tr>
+<tr>
+<td>codigoLote</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número sequencial que identifica o lote de pedidos sendo enviado.</td>
+<td></td>
+</tr>
+<tr>
+<td>pedidos</td>
+<td>array</td>
+<td>Sim</td>
+<td>Lista contendo um ou mais pedidos individuais.</td>
+<td><a href="#pedido">Pedido</a></td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<hr>
+<h5 id='estruturas-de-dados-corpo-da-requisicao'>Estruturas de Dados (Corpo da Requisição)</h5><h6 id='pedido'>Pedido</h6>
+<ul>
+<li>Representa um pedido individual dentro de um lote (PedidoLote) enviado pelo laboratório apoiado.</li>
+<li><strong>Exemplo:</strong></li>
+</ul>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"local"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"protocolo"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"atendimento"</span><span class="p">:</span><span class="w"> </span><span class="mi">98765</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-26"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hora"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10:30:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"setorHospitalar"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"leito"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A101"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paciente"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">Objeto</span><span class="w"> </span><span class="err">Paciente</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"observacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Paciente em jejum de 8 horas."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"guias"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">Objeto</span><span class="w"> </span><span class="err">Guia</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>Propriedades:</strong></li>
+</ul>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>| Nome              | Tipo    | Obrigatório | Tamanho Máximo | Descrição                                                    | Modelo Relacionado    |
+  | ----------------- | ------- | ----------- | -------------- | ------------------------------------------------------------ | --------------------- |
+  | sequencial      | integer | Sim         |                | Número sequencial do pedido dentro do lote.                  |                       |
+  | local           | string  | Sim         | 2              | Identificação do local de coleta no apoiado.                 |                       |
+  | protocolo       | integer | Sim         |                | Identificação do número do pedido no apoiado.                |                       |
+  | atendimento     | integer | Não         |                | Identificação do número do atendimento no apoiado.           |                       |
+  | data            | date    | Sim         |                | Data de cadastro do pedido no apoiado. Formato: YYYY-MM-DD. |                       |
+  | hora            | time    | Sim         |                | Hora de cadastro do pedido no apoiado. Formato: HH:MM:SS.  |                       |
+  | setorHospitalar | integer | Não         |                | ID do setor hospitalar.                                      |                       |
+  | leito           | string  | Não         | 10             | Leito do paciente.                                           |                       |
+  | paciente        | object  | Sim         |                | Dados do paciente associado a este pedido.                   | <a href="#paciente">Paciente</a> |
+  | observacao      | string  | Não         | 300            | Observação geral do pedido.                                  |                       |
+  | guias           | array   | Sim         |                | Lista de guias associadas a este pedido.                     | <a href="#guia">Guia</a>         |</p>
+<h6 id='paciente'>Paciente</h6>
+<ul>
+<li>Representa os dados do paciente associado a um pedido.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;codigo&quot;: 556677,
+&quot;nome&quot;: &quot;Maria Silva&quot;,
+&quot;dataNascimento&quot;: &quot;1985-03-15&quot;,
+&quot;idade&quot;: 39,
+&quot;sexo&quot;: &quot;Feminino&quot;,
+&quot;nacionalidade&quot;: &quot;10&quot;,
+&quot;peso&quot;: 65.5,
+&quot;altura&quot;: 1.68,
+&quot;dataUltMens&quot;: &quot;2024-10-01&quot;,
+&quot;prontuario&quot;: &quot;PRONT987&quot;,
+&quot;cpf&quot;: &quot;123.456.789-00&quot;,
+&quot;nomeMae&quot;: &quot;Ana Silva&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong></li>
+</ul>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>| Nome             | Tipo    | Obrigatório | Tamanho Máximo | Descrição                                                    |
+  | ---------------- | ------- | ----------- | -------------- | ------------------------------------------------------------ |
+  | codigo         | integer | Sim         |                | Código de identificação do paciente no sistema do laboratório apoiado. |
+  | nome           | string  | Sim         | 50             | Nome completo do paciente.                                   |
+  | dataNascimento | date    | Sim         |                | Data de nascimento do paciente. Formato: YYYY-MM-DD.       |
+  | idade          | integer | Sim         |                | Idade do paciente em anos.                                   |
+  | sexo           | string  | Sim         |                | Sexo do paciente. Valores permitidos: Masculino, Feminino, Não Espec., M, F. |
+  | nacionalidade  | string  | Sim         |                | ID da nacionalidade do paciente. Consulte a tabela de códigos em <a href="Nacionalidades.pdf">Nacionalidades</a>. |
+  | peso           | double  | Não         |                | Peso do paciente em Kg. Formato: NN ou NN.NN.            |
+  | altura         | double  | Não         |                | Altura do paciente em metros. Formato: NN ou NN.NN.      |
+  | dataUltMens    | date    | Não         |                | Data da última menstruação da paciente. Formato: YYYY-MM-DD. |
+  | prontuario     | string  | Não         | 15             | Número do prontuário ou identificação do paciente em outra instituição. |
+  | cpf            | string  | Não         |                | Cadastro de Pessoa Física (CPF) do paciente.                 |
+  | nomeMae        | string  | Não         | 50             | Nome da mãe do paciente.                                     |
+- <strong>Observações:</strong></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
+<ul>
+<li>O campo peso e altura aceitam valores decimais com até duas casas após a vírgula (ex.: 70.50).</li>
+</ul>
+<h6 id='guia'>Guia</h6>
+<ul>
+<li>Representa uma guia associada a um pedido.</li>
+<li>Contém informações sobre o convênio, plano, médico solicitante e a lista de exames da guia.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;numeracao&quot;: 1,
+&quot;convenio&quot;: &quot;UNIMED&quot;,
+&quot;plano&quot;: &quot;DIVINOPOLIS&quot;,
+&quot;dataPedido&quot;: &quot;2024-10-26&quot;,
+&quot;solicitante&quot;: { /* ... Objeto Solicitante ... */ },
+&quot;guiaExames&quot;: [ { /* ... Objeto GuiaExame ... */ } ]
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome          | Tipo    | Obrigatório | Descrição                                                    | Modelo Relacionado          |
+| ------------- | ------- | ----------- | ------------------------------------------------------------ | --------------------------- |
+| numeracao   | integer | Sim         | Número sequencial que identifica a guia dentro do pedido.    |                             |
+| convenio    | string  | Não         | Código ou identificação do convênio médico.                  |                             |
+| plano       | string  | Não         | Código ou identificação do plano de saúde dentro do convênio. |                             |
+| dataPedido  | date    | Sim         | Data em que a guia médica foi emitida ou o pedido médico foi feito. Formato: YYYY-MM-DD. |                             |
+| solicitante | object  | Não         | Dados do médico ou profissional de saúde que solicitou os exames desta guia. | <a href="#solicitante">Solicitante</a> |
+| guiaExames  | array   | Sim         | Lista de exames solicitados especificamente nesta guia.      | <a href="#guiaexame">GuiaExame</a>     |</li>
+</ul>
+<h6 id='solicitante'>Solicitante</h6>
+<ul>
+<li>Representa os dados do médico ou profissional de saúde que solicitou os exames em uma guia.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;nome&quot;: &quot;Dr. Carlos Andrade&quot;,
+&quot;conselho&quot;: &quot;CRM&quot;,
+&quot;ufConselho&quot;: &quot;SP&quot;,
+&quot;numeroConselho&quot;: &quot;123456&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome            | Tipo   | Obrigatório | Tamanho Máximo | Descrição                                                                                                                                                           |
+| :-------------- | :----- | :---------- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| nome          | string | Sim         | 50             | Nome do médico ou profissional solicitante. Obrigatório se o objeto solicitante for incluído.                                                                     |
+| conselho      | string | Sim         |                | Sigla do conselho profissional (Ex: CRM, CRO, COREN, etc.). Valores permitidos: CRAS, CRBIO, CRBM, CREF, COREN, CRF, CREFITO, CRFA, CRM, CRMV, CRN, CRO, CRP, CRTR, OUT. Obrigatório se o objeto solicitante for incluído. |
+| ufConselho    | string | Sim         | 2              | Sigla da Unidade Federativa (UF) do conselho profissional. Obrigatório se o objeto solicitante for incluído.                                                      |
+| numeroConselho| string | Sim         |                | Número de registro do profissional no conselho. Obrigatório se o objeto solicitante for incluído.                                                                 |</li>
+</ul>
+<h6 id='guiaexame'>GuiaExame</h6>
+<ul>
+<li>Representa um exame específico solicitado dentro de uma guia.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;codigoExameApoio&quot;: &quot;HEMO&quot;,
+&quot;descricaoExameApoio&quot;: &quot;Hemograma Completo&quot;,
+&quot;dataColeta&quot;: &quot;2024-10-26&quot;,
+&quot;horaColeta&quot;: &quot;10:35:00&quot;,
+&quot;material&quot;: &quot;Sangue Total (EDTA)&quot;,
+&quot;prioridade&quot;: &quot;N&quot;,
+&quot;faturaExame&quot;: &quot;T&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome                  | Tipo   | Obrigatório | Tamanho Máximo | Descrição                                                                                                |
+| :-------------------- | :----- | :---------- | :------------- | :------------------------------------------------------------------------------------------------------- |
+| codigoExameApoio    | string | Sim         | 10             | Código de identificação do exame no sistema de apoio.                                                    |
+| descricaoExameApoio | string | Sim         | 60             | Descrição do exame (informativo, não usado para identificação).                                          |
+| dataColeta          | date   | Não<sup>1</sup>        |                | Data em que o material para este exame foi coletado. Formato: YYYY-MM-DD.                               |
+| horaColeta          | time   | Não<sup>1</sup>        |                | Hora em que o material para este exame foi coletado. Formato: HH:MM:SS.                                |
+| material            | string | Não         | 100            | Descrição do material biológico coletado para este exame.                                                |
+| prioridade          | string | Sim         | 1              | Indica a prioridade de processamento do exame. Valores permitidos: U (Urgente), N (Normal).          |
+| faturaExame         | string | Sim         |                | Indica se o exame deve ser faturado. Valores permitidos: T (True), F (False).                        |</li>
+<li><p><strong>Observações:</strong></p>
+
+<ul>
+<li><sup>1</sup>: Obrigatório de acordo com a parametrização do laboratório (Autolac).</li>
+</ul></li>
+</ul>
+
+<hr>
+<h4 id='response-3'>Response</h4><h5 id='sucesso-200-ok-3'>Sucesso (200 OK)</h5>
+<ul>
+<li>Lote de pedidos recebido e processado pela API. A resposta indicará o status de processamento de cada pedido individualmente (integrado ou rejeitado) e pode conter sucessos e falhas parciais dentro do lote.</li>
+<li>Content-Type: application/json</li>
+</ul>
+<h6 id='visao-geral-campo-data-3'>Visão geral (campo data)</h6>
+<ul>
+<li>O campo data do <a href="#result">Result</a> contém um objeto PedidoLoteRetorno.</li>
+<li>Este objeto fornece um resumo do processamento do lote de pedidos enviado, incluindo quais pedidos foram integrados, quais foram rejeitados, e detalhes como erros e etiquetas geradas.</li>
+</ul>
+<h6 id='exemplo-campo-data-pedidoloteretorno'>Exemplo (campo data - PedidoLoteRetorno)</h6><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024011501</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qtdPedidosLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qtdPedidosIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qtdExamesIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Pedido Sequencial 2: Exame 'XYZ' não encontrado."</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"pedidosIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="s2">"01-987654"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"erros"</span><span class="p">:[],</span><span class="w">
+      </span><span class="nl">"etiqueta"</span><span class="p">:{</span><span class="w">
+         </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="mi">987654</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"recipientes"</span><span class="p">:[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"codigoBarras"</span><span class="p">:</span><span class="s2">"240704000001"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEUDO_ZPL_OU_EPL_PARA_ETIQUETA_GLI"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"pedidosRejeitados"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001|999999911|LO|735"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Exame 'XYZ' não encontrado."</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"recipientes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+       </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h6 id='propriedades-campo-data-pedidoloteretorno'>Propriedades (campo data - PedidoLoteRetorno)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Nome</th>
+<th style="text-align: left">Tipo</th>
+<th style="text-align: left">Obrigatório</th>
+<th style="text-align: left">Descrição</th>
+<th style="text-align: left">Modelo Relacionado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">codigoApoiado</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Número de identificação do laboratório apoiado que enviou o lote.</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">codigoLote</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Número sequencial do lote processado.</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">qtdPedidosLote</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Quantidade total de pedidos recebidos no lote.</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">qtdPedidosIntegrados</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Quantidade de pedidos do lote que foram integrados com sucesso.</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">qtdExamesIntegrados</td>
+<td style="text-align: left">integer</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Quantidade total de exames (dentro dos pedidos integrados) que foram processados com sucesso.</td>
+<td style="text-align: left"></td>
+</tr>
+<tr>
+<td style="text-align: left">erros</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Lista (pode ser vazia) de mensagens de erro ocorridas durante o processamento do lote que não são específicas de um único pedido.</td>
+<td style="text-align: left">string[]</td>
+</tr>
+<tr>
+<td style="text-align: left">pedidosIntegrados</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Lista (pode ser vazia) detalhada dos pedidos que foram integrados com sucesso.</td>
+<td style="text-align: left"><a href="#pedidoretorno">PedidoRetorno</a></td>
+</tr>
+<tr>
+<td style="text-align: left">pedidosRejeitados</td>
+<td style="text-align: left">array</td>
+<td style="text-align: left">Sim</td>
+<td style="text-align: left">Lista (pode ser vazia) detalhada dos pedidos que foram rejeitados devido a erros.</td>
+<td style="text-align: left"><a href="#pedidoretorno">PedidoRetorno</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Exemplo Completo (Response 200 OK - Sucesso total):</strong></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+   </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"success"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"message"</span><span class="p">:</span><span class="s2">"Registro incluído com sucesso."</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="mi">2024070401</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"qtdPedidosLote"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"qtdPedidosIntegrados"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"qtdExamesIntegrados"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"erros"</span><span class="p">:[],</span><span class="w">
+      </span><span class="nl">"pedidosIntegrados"</span><span class="p">:[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="s2">"01-987654"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"erros"</span><span class="p">:[],</span><span class="w">
+            </span><span class="nl">"etiqueta"</span><span class="p">:{</span><span class="w">
+               </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="mi">987654</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"recipientes"</span><span class="p">:[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"codigoBarras"</span><span class="p">:</span><span class="s2">"240704000001"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEUDO_ZPL_OU_EPL_PARA_ETIQUETA_GLI"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="w">
+                  </span><span class="p">},</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"codigoBarras"</span><span class="p">:</span><span class="s2">"240704000002"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEUDO_ZPL_OU_EPL_PARA_ETIQUETA_HEMO"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMO"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"pedidosRejeitados"</span><span class="p">:[]</span><span class="w">
+   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
+<p><strong>Exemplo Completo (Response 200 OK - Sucesso parcial):</strong></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alguns pedidos do lote não foram processados."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024070401</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"qtdPedidosLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"qtdPedidosIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"qtdExamesIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"pedidosIntegrados"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="s2">"01-VALIDO"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"erros"</span><span class="p">:[],</span><span class="w">
+               </span><span class="nl">"etiqueta"</span><span class="p">:{</span><span class="w"> </span><span class="err">/*</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">dados</span><span class="w"> </span><span class="err">da</span><span class="w"> </span><span class="err">etiqueta</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">*/</span><span class="w"> </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"pedidosRejeitados"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02-INVALIDO"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Exame 'XYZ' não encontrado."</span><span class="p">],</span><span class="w">
+               </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nl">"recipientes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<hr>
+<h5 id='estruturas-de-dados-corpo-da-resposta-campo-data'>Estruturas de Dados (Corpo da Resposta - campo data)</h5><h6 id='pedidoretorno'>PedidoRetorno</h6>
+<ul>
+<li>Representa o resultado do processamento de um pedido individual dentro de um lote, indicando se foi integrado ou rejeitado e fornecendo detalhes relevantes como erros ou etiquetas geradas.</li>
+<li><strong>Exemplo (Pedido integrado):</strong>
+<code>json
+{
+&quot;sequencial&quot;: 1,
+&quot;identificacaoApoiado&quot;: &quot;01-123456&quot;,
+&quot;erros&quot;: [],
+&quot;etiqueta&quot;: { /* ... Objeto Etiqueta ... */ }
+}
+</code></li>
+<li><strong>Exemplo (Pedido rejeitado):</strong></li>
+</ul>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identificacaoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000001|999999911|LO|735"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Exame 'XYZ' não encontrado."</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"etiqueta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+       </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"recipientes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<ul>
+<li><strong>Propriedades:</strong>
+| Nome                 | Tipo   | Obrigatório | Descrição                                                                                                                                                           | Modelo Relacionado                               |
+| :------------------- | :----- | :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------- |
+| sequencial         | integer| Sim         | Número sequencial do pedido original dentro do lote enviado.                                                                                                        |                                                  |
+| identificacaoApoiado| string | Sim         | Identificação do pedido no sistema do apoiado (geralmente local-protocolo do envio).                                                                            |                                                  |
+| erros              | array  | Sim         | Lista (pode ser vazia) de mensagens de erro específicas para este pedido.                                                                                           |                                          |
+| etiqueta           | object | Sim         | Contém os dados das etiquetas geradas para este pedido (se integrado com sucesso). Será um objeto com estrutura mínima se o pedido foi rejeitado ou não gerou etiquetas. | <a href="#etiqueta">Etiqueta</a> |</li>
+</ul>
+<h6 id='etiqueta'>Etiqueta</h6>
+<ul>
+<li>Contém a identificação original do pedido no sistema do apoiado e a lista de recipientes (com suas respectivas etiquetas e códigos de barras) gerados pelo Autolac para um pedido integrado com sucesso.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;localApoiado&quot;: &quot;01&quot;,
+&quot;protocoloApoiado&quot;: 123456,
+&quot;recipientes&quot;: [ { /* ... Objeto Recipiente ... */ } ]
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome               | Tipo    | Obrigatório | Descrição                                                    | Modelo Relacionado        |
+| ------------------ | ------- | ----------- | ------------------------------------------------------------ | ------------------------- |
+| localApoiado     | string  | Sim         | Identificação do local de coleta original do pedido.         |                           |
+| protocoloApoiado | integer | Sim         | Número do protocolo original do pedido.                      |                           |
+| recipientes      | array   | Sim         | Lista (pode ser vazia) dos recipientes deste pedido, cada um com seu código de barras, etiqueta e exames. | <a href="#recipiente">Recipiente</a> |</li>
+</ul>
+<h6 id='recipiente'>Recipiente</h6>
+<ul>
+<li>Representa um recipiente específico (tubo, frasco, etc.) necessário para a coleta de um ou mais exames de um pedido, incluindo o código de barras e a etiqueta gerados pelo Autolac.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;codigoBarras&quot;: &quot;020057310002&quot;,
+&quot;etiqueta&quot;: &quot;CONTEUDO_ZPL_OU_EPL_DA_ETIQUETA_EXEMPLO&quot;,
+&quot;exames&quot;: &quot;GLI&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome         | Tipo   | Obrigatório | Descrição                                                                              |
+| :----------- | :----- | :---------- | :------------------------------------------------------------------------------------- |
+| codigoBarras| string | Sim         | Código de barras gerado para identificação única deste recipiente/amostra.             |
+| etiqueta   | string | Sim         | Conteúdo da etiqueta para impressão (geralmente em formato ZPL ou EPL).                |
+| exames     | string | Sim         | Lista de exames (códigos/siglas) contidos neste recipiente/etiqueta.                   |</li>
+</ul>
+
+<hr>
+<h5 id='falha-outros-status-codes-3'>Falha (Outros Status Codes)</h5>
+<ul>
+<li><p>Além do sucesso (200 OK, mesmo com falhas parciais no lote), a API pode retornar os seguintes códigos de erro principais, seguindo o <a href="#result">Result</a>:</p>
+
+<ul>
+<li><strong>400 Bad Request</strong>: A requisição está malformada (ex: JSON inválido).</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 400,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Requisição inválida. Verifique o formato do JSON.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>401 Unauthorized</strong>: Token JWT ausente, inválido ou expirado.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 401,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Unauthorized&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>403 Forbidden</strong>: O usuário autenticado não tem permissão para a operação.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 403,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Acesso Negado&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>422 Unprocessable Entity</strong>: Erros de validação que impedem o processamento do lote como um todo (detalhes em data.erros do PedidoLoteRetorno, mesmo com statusCode 200 e success false). Se o erro for na estrutura da requisição antes mesmo de tentar processar o lote, pode retornar 422 diretamente.</li>
+<li>Exemplo (Erro de validação geral do lote):
+<code>json
+{
+  &quot;statusCode&quot;: 422,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Lote não processado. Parâmetros inválidos.&quot;,
+  &quot;data&quot;: {
+      &quot;codigoApoiado&quot;: 123,
+      &quot;codigoLote&quot;: 2024011501,
+      &quot;qtdPedidosLote&quot;: 0,
+      &quot;qtdPedidosIntegrados&quot;: 0,
+      &quot;qtdExamesIntegrados&quot;: 0,
+      &quot;erros&quot;: [&quot;Lote sem pedidos informados.&quot;],
+      &quot;pedidosIntegrados&quot;: [],
+      &quot;pedidosRejeitados&quot;: []
+  }
+}
+</code></li>
+<li><strong>500 Internal Server Error</strong>: Falha inesperada durante o processamento no servidor.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 500,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Ocorreu um erro interno no servidor.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+</ul></li>
+</ul>
+<h5 id='mensagens-de-retorno-3'>Mensagens de Retorno</h5><h6 id='erros-das-validacoes-iniciais-do-lote-geralmente-em-data-erros-do-pedidoloteretorno'>Erros das validações iniciais do Lote (geralmente em data.erros do PedidoLoteRetorno)</h6>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td style="text-align: left">Parâmetro(s) de consulta não informado(s).</td>
+<td style="text-align: left">O corpo da requisição (lote) está nulo ou vazio.</td>
+</tr>
+<tr>
+<td style="text-align: left">Laboratório apoiado não informado.</td>
+<td style="text-align: left">O campo codigoApoiado no lote não foi fornecido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Código do laboratório apoiado inválido.</td>
+<td style="text-align: left">O campo codigoApoiado no lote é menor ou igual a zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">Número do lote não informado.</td>
+<td style="text-align: left">O campo codigoLote no lote não foi fornecido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Número do lote inválido.</td>
+<td style="text-align: left">O campo codigoLote no lote é menor ou igual a zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">Lote sem pedidos informados.</td>
+<td style="text-align: left">A lista pedidos no lote está nula ou vazia.</td>
+</tr>
+<tr>
+<td style="text-align: left">Existem pedidos no lote com sequenciais duplicados.</td>
+<td style="text-align: left">A lista pedidos contém itens com o mesmo valor no campo sequencial.</td>
+</tr>
+<tr>
+<td style="text-align: left">Laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O codigoApoiado fornecido não corresponde a um laboratório apoiado válido no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left">Id do lab. apoiado não encontrado no contexto da requisição HTTP.</td>
+<td style="text-align: left">Erro interno ao obter o ID do apoiado a partir do token JWT.</td>
+</tr>
+<tr>
+<td style="text-align: left">Identificação do laboratório apoiado difere da utilizada nas credenciais de login do InterAutolac.</td>
+<td style="text-align: left">O codigoApoiado no lote não corresponde ao ID do apoiado associado ao token JWT da requisição.</td>
+</tr>
+<tr>
+<td style="text-align: left">Lote já importado.</td>
+<td style="text-align: left">Já existe um registro de histórico para o codigoApoiado e codigoLote fornecidos.</td>
+</tr>
+<tr>
+<td style="text-align: left">Local de coleta informado no cadastro do laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O localId configurado no cadastro do apoiado não é válido ou não foi encontrado (usado como padrão).</td>
+</tr>
+<tr>
+<td style="text-align: left">Convênio informado no cadastro do laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O convenioId configurado no cadastro do apoiado não é válido ou não foi encontrado (usado como padrão).</td>
+</tr>
+<tr>
+<td style="text-align: left">Plano informado no cadastro do laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O planoId (junto com convenioId) configurado no cadastro do apoiado não é válido ou não foi encontrado.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h6 id='erros-que-rejeitam-pedidos-individuais-em-data-pedidosrejeitados-n-erros'>Erros que rejeitam pedidos individuais (em data.pedidosRejeitados[n].erros)</h6>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td style="text-align: left">O valor do pedido não pode nulo.</td>
+<td style="text-align: left">Um item na lista pedidos é nulo.</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td style="text-align: left">O valor sequencial do pedido deve ser maior que zero.</td>
+<td style="text-align: left">O campo sequencial de um pedido é menor ou igual a zero.</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td style="text-align: left">Guias do pedido não informadas.</td>
+<td style="text-align: left">A lista guias de um pedido está vazia.</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td style="text-align: left">Pedidos com guias sem exames informados.</td>
+<td style="text-align: left">Uma ou mais guias dentro de um pedido não contêm exames (guiaExames está vazio).</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td style="text-align: left">Existem exames duplicados na guia.</td>
+<td style="text-align: left">A guia tem exames duplicados (exames com a mesma identificação).</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td style="text-align: left">O pedido contém exames toxicológicos. O exame toxicológico deve ser cadastrado em um pedido exclusivo.</td>
+<td style="text-align: left">Um pedido contém um exame marcado como toxicológico Sodré junto com outros exames.</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td style="text-align: left">O Autolac utiliza protocolos com {0} dígitos. A informação recebida está maior que o permitido.</td>
+<td style="text-align: left">O campo protocolo de um pedido excede o número de dígitos configurado (quando Utiliza Protocolo Apoiado).</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td style="text-align: left">Pedido já cadastrado.</td>
+<td style="text-align: left">Já existe uma solicitação no Autolac com a mesma identificação (Local/Protocolo ou Identificação Apoiado).</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td style="text-align: left">Local com informação maior que o permitido.</td>
+<td style="text-align: left">O campo local de um pedido tem mais de 2 caracteres.</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td style="text-align: left">Setor hospitalar não encontrado.</td>
+<td style="text-align: left">O setorHospitalar informado em um pedido não corresponde a um setor válido.</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td style="text-align: left">Convênio informado na guia não encontrado.</td>
+<td style="text-align: left">O convenio informado em uma guia não corresponde a um convênio válido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Plano informado na guia não encontrado.</td>
+<td style="text-align: left">O plano (junto com convenio) informado em uma guia não corresponde a um plano válido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Código do exame no laboratório de apoio não informado.</td>
+<td style="text-align: left">O campo codigoExameApoio em um guiaExame está vazio.</td>
+</tr>
+<tr>
+<td style="text-align: left">Exame informado não vinculado ao laboratório apoiado.</td>
+<td style="text-align: left">O codigoExameApoio em um guiaExame não corresponde a um exame configurado para o apoiado no apoio.</td>
+</tr>
+<tr>
+<td style="text-align: left">Exame informado no pedido bloqueado no laboratório de apoio.</td>
+<td style="text-align: left">O exame correspondente ao codigoExameApoio está marcado como bloqueado (Bloqueado ou Bloqueado Temp).</td>
+</tr>
+<tr>
+<td style="text-align: left">Tabela de preços do exame não encontrada.</td>
+<td style="text-align: left">Não foi encontrada uma entrada na tabela de preços para o exame e o plano da guia.</td>
+</tr>
+<tr>
+<td style="text-align: left">Dados do solicitante incompletos: Nome.</td>
+<td style="text-align: left">O campo nome do solicitante está vazio ao tentar cadastrar um novo solicitante.</td>
+</tr>
+<tr>
+<td style="text-align: left">Dados do solicitante incompletos: Conselho profissional.</td>
+<td style="text-align: left">O campo conselho do solicitante está vazio ao tentar cadastrar um novo solicitante.</td>
+</tr>
+<tr>
+<td style="text-align: left">Dados do solicitante incompletos: UF do conselho profissional.</td>
+<td style="text-align: left">O campo ufConselho do solicitante está vazio ao tentar cadastrar um novo solicitante.</td>
+</tr>
+<tr>
+<td style="text-align: left">Dados do solicitante incompletos: Número do conselho profissional.</td>
+<td style="text-align: left">O campo numeroConselho do solicitante está vazio ao tentar cadastrar um novo solicitante.</td>
+</tr>
+<tr>
+<td style="text-align: left">Regime de atendimento não encontrado.</td>
+<td style="text-align: left">Falha ao buscar o parâmetro de sistema Regime de Atendimento durante processamento da guia.</td>
+</tr>
+</tbody></table>
+<h6 id='mensagens-gerais-no-campo-message-da-resposta-principal-do-result'>Mensagens gerais (no campo message da resposta principal do <a href="#result">Result</a>)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Situação Geral</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Lote não processado. Parâmetros inválidos.</td>
+<td style="text-align: left">Uma ou mais validações iniciais do lote falharam (detalhes em data.erros).</td>
+</tr>
+<tr>
+<td style="text-align: left">Todos os pedidos informados no lote foram rejeitados.</td>
+<td style="text-align: left">Nenhum pedido do lote pôde ser integrado (detalhes das rejeições em data.pedidosRejeitados).</td>
+</tr>
+<tr>
+<td style="text-align: left">Alguns pedidos do lote não foram processados.</td>
+<td style="text-align: left">Houve sucesso parcial, mas nem todos os pedidos foram integrados (ver data.pedidosIntegrados, data.pedidosRejeitados).</td>
+</tr>
+<tr>
+<td style="text-align: left">Alguns pedidos do lote apresentam erros.</td>
+<td style="text-align: left">Houve sucesso parcial, mas alguns pedidos foram rejeitados (detalhes em data.pedidosRejeitados).</td>
+</tr>
+<tr>
+<td style="text-align: left">Falha ao gerar as etiquetas pelo GeraEtiqueta.exe</td>
+<td style="text-align: left">O processo externo de geração de etiquetas falhou.</td>
+</tr>
+<tr>
+<td style="text-align: left">Arquivo gerado pelo GeraEtiqueta não encontrado.</td>
+<td style="text-align: left">O arquivo de saída do processo de etiquetas não foi encontrado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Tempo para leitura do arquivo de etiquetas gerado pelo GeraEtiqueta expirado.</td>
+<td style="text-align: left">O arquivo de saída do processo de etiquetas estava bloqueado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Falha ao ler o arquivo .xml da etiqueta.</td>
+<td style="text-align: left">Erro ao processar o conteúdo do arquivo de etiquetas.</td>
+</tr>
+<tr>
+<td style="text-align: left">Identificação do laboratório apoiado no lote de retorno não pode ser nula.</td>
+<td style="text-align: left">Erro interno durante a preparação para gerar etiquetas.</td>
+</tr>
+<tr>
+<td style="text-align: left">Falha ao concluir a importação do lote.</td>
+<td style="text-align: left">Erro genérico indicando que a importação não foi totalmente bem-sucedida.</td>
+</tr>
+<tr>
+<td style="text-align: left">Pedido já inserido no lote de retorno.</td>
+<td style="text-align: left">Erro interno ao construir o objeto de retorno.</td>
+</tr>
+<tr>
+<td style="text-align: left"><em>Outras exceções inesperadas</em></td>
+<td style="text-align: left">Erros não previstos capturados pela aplicação.</td>
+</tr>
+</tbody></table>
+
+<div style="page-break-after: always"></div>
+<h3 id='resultados'>Resultados</h3><h4 id='visao-geral-4'>Visão geral</h4>
+<ul>
+<li>Consulta os resultados de exames para um lote de protocolos especificados.</li>
+<li>Consulta de resultados:
+
+<ul>
+<li>Path: /Api/Inter-Autolac/Resultados</li>
+<li>Método: POST</li>
+<li>Content-Type: application/json</li>
+<li>Autenticação: Requer Token JWT (Cabeçalho Authorization: Bearer <token>)</li>
+</ul></li>
+</ul>
+<h4 id='request-4'>Request</h4><h5 id='visao-geral-corpo-da-requisicao-2'>Visão geral (Corpo da Requisição)</h5>
+<ul>
+<li>O corpo da requisição deve ser um objeto ResultadoLoteConsulta.</li>
+<li>Representa um lote de protocolos cujos resultados estão sendo consultados pelo laboratório apoiado.</li>
+</ul>
+<h5 id='exemplo-corpo-da-requisicao-resultadoloteconsulta'>Exemplo (Corpo da Requisição - ResultadoLoteConsulta)</h5><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024070501</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"protocolos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">987654</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"codigoExameApoio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="nl">"codigoExameApoio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HEMO"</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h5 id='propriedades-corpo-da-requisicao-resultadoloteconsulta'>Propriedades (Corpo da Requisição - ResultadoLoteConsulta)</h5>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+<th>Modelo Relacionado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>codigoApoiado</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número de identificação único do laboratório apoiado no sistema Autolac. Deve corresponder ao token JWT.</td>
+<td></td>
+</tr>
+<tr>
+<td>codigoLote</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número sequencial que identifica o lote de pedidos previamente enviado e que está sendo consultado.</td>
+<td></td>
+</tr>
+<tr>
+<td>protocolos</td>
+<td>array</td>
+<td>Sim</td>
+<td>Lista contendo um ou mais protocolos individuais a serem consultados.</td>
+<td><a href="#protocoloconsulta">ProtocoloConsulta</a></td>
+</tr>
+</tbody></table>
+
+<hr>
+<h5 id='estruturas-de-dados-corpo-da-requisicao-2'>Estruturas de Dados (Corpo da Requisição)</h5><h6 id='protocoloconsulta'>ProtocoloConsulta</h6>
+<ul>
+<li>Representa um protocolo específico dentro do lote de consulta de resultados.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;sequencial&quot;: 1,
+&quot;localApoiado&quot;: &quot;01&quot;,
+&quot;protocoloApoiado&quot;: 987654,
+&quot;exames&quot;: [
+  { &quot;codigoExameApoio&quot;: &quot;GLI&quot; }
+]
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome               | Tipo    | Obrigatório | Descrição                                                    | Modelo Relacionado              |
+| ------------------ | ------- | ----------- | ------------------------------------------------------------ | ------------------------------- |
+| sequencial       | integer | Sim         | Número sequencial único para identificar este protocolo dentro do lote na requisição e correlacionar com a resposta. |                                 |
+| localApoiado     | string  | Sim         | Código identificador do local de coleta no apoiado, referente ao protocolo original. Usado para encontrar a solicitação. |                                 |
+| protocoloApoiado | integer | Sim         | Número identificador do protocolo no apoiado, referente ao protocolo original. Usado para encontrar a solicitação. |                                 |
+| exames           | array   | Não         | Lista opcional de exames específicos a serem consultados. Se omitida ou vazia, todos os exames disponíveis do protocolo serão retornados. | <a href="#exameconsulta">ExameConsulta</a> |</li>
+</ul>
+<h6 id='exameconsulta'>ExameConsulta</h6>
+<ul>
+<li>Representa um exame específico a ser consultado dentro de um protocolo.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;codigoExameApoio&quot;: &quot;GLI&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome                 | Tipo   | Obrigatório | Descrição                                                                                                  |
+| -------------------- | ------ | ----------- | ---------------------------------------------------------------------------------------------------------- |
+| codigoExameApoio   | string | Sim         | Código do exame no laboratório de apoio.                                                                   |
+---</li>
+</ul>
+<h4 id='response-4'>Response</h4><h5 id='sucesso-200-ok-4'>Sucesso (200 OK)</h5>
+<ul>
+<li>Consulta processada. A resposta indicará o status de processamento de cada protocolo individualmente e pode conter sucessos e falhas parciais.</li>
+<li>Content-Type: application/json</li>
+</ul>
+<h6 id='visao-geral-campo-data-4'>Visão geral (campo data)</h6>
+<ul>
+<li>O campo data do <a href="#result">Result</a> contém um objeto ResultadoLoteRetorno.</li>
+<li>Este objeto fornece os resultados consultados para o lote de protocolos especificado, detalhando o sucesso ou falha para cada protocolo.</li>
+</ul>
+<h6 id='exemplo-campo-data-resultadoloteretorno'>Exemplo (campo data - ResultadoLoteRetorno)</h6><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024070501</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"protocolos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">987654</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pacienteNome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"exameApoioCodigo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"exameApoioDescricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glicose"</span><span class="p">,</span><span class="w">
+          </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">demais</span><span class="w"> </span><span class="err">campos</span><span class="w"> </span><span class="err">do</span><span class="w"> </span><span class="err">exame</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"laudoPdf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">987655</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pacienteNome"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Solicitação não encontrada para a identificação 02|987655."</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"laudoPdf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h6 id='propriedades-campo-data-resultadoloteretorno'>Propriedades (campo data - ResultadoLoteRetorno)</h6>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+<th>Obrigatório</th>
+<th>Descrição</th>
+<th>Modelo Relacionado</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>codigoApoiado</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número de identificação do laboratório apoiado que enviou o lote.</td>
+<td></td>
+</tr>
+<tr>
+<td>codigoLote</td>
+<td>integer</td>
+<td>Sim</td>
+<td>Número sequencial do lote consultado.</td>
+<td></td>
+</tr>
+<tr>
+<td>protocolos</td>
+<td>array</td>
+<td>Sim</td>
+<td>Lista contendo o resultado da consulta para cada protocolo enviado na requisição (pode conter erros).</td>
+<td><a href="#protocoloretorno">ProtocoloRetorno</a></td>
+</tr>
+</tbody></table>
+
+<p><strong>Exemplo Completo (Response 200 OK - Sucesso total):</strong></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Consulta realizada com sucesso."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"codigoApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"codigoLote"</span><span class="p">:</span><span class="w"> </span><span class="mi">2024070501</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"protocolos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sequencial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"localApoiado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"protocoloApoiado"</span><span class="p">:</span><span class="w"> </span><span class="mi">987654</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"pacienteNome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João da Silva"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"erros"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"exames"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"exameApoioCodigo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"exameApoioDescricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Glicose"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"dataHoraLiberacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T10:30:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"observacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q29sZXRhIHJlYWxpemFkYSBlbSBqZWp1bS4="</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"resultadoEmPdf"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"resultadoPdf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"componentes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"componenteApoioId"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"modoPreenchimentoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Informado"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"formatoResultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Numérico"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"codigo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GLI"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"resultado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTU="</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"referencia"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"referenciaId"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"sexo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ambos"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"idadeMinima"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dia(s)"</span><span class="p">,</span><span class="w"> </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
+                  </span><span class="nl">"idadeMaxima"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ano(s)"</span><span class="p">,</span><span class="w"> </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="w"> </span><span class="p">},</span><span class="w">
+                  </span><span class="nl">"valorMinimo"</span><span class="p">:</span><span class="w"> </span><span class="mf">70.0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"valorMaximo"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.0</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"valorTexto"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"referenciaTexto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NzAgYSA5OSBtZy9kTA=="</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"unidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U/mL"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"metodo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RW56aW3DoXRpY28="</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"reguaReferencial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"imagem"</span><span class="p">:</span><span class="s2">"BASE64_DE_IMAGEM_BMP_DA_REGUA"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"rtf"</span><span class="p">:</span><span class="s2">"BASE64_DE_IMAGEM_RTF_DA_REGUA"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"responsavel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dr. Carlos Andrade"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"conselho"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRBM"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"conselhoUf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"conselhoNumero"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"laudoPdf"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Exemplo Completo (Response 200 OK - Sucesso parcial):</strong>
+```json
+{
+  &quot;statusCode&quot;: 200,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Consulta realizada com erros parciais.&quot;,
+  &quot;data&quot;: {
+    &quot;codigoApoiado&quot;: 123,
+    &quot;codigoLote&quot;: 2024070501,
+    &quot;protocolos&quot;: [
+      {
+        &quot;sequencial&quot;: 1,
+        &quot;localApoiado&quot;: &quot;01&quot;,
+        &quot;protocoloApoiado&quot;: 987654,
+        &quot;pacienteNome&quot;: null,
+        &quot;erros&quot;: [
+          &quot;Solicitação não encontrada para a identificação do apoiado.&quot;
+        ],
+        &quot;exames&quot;: [],
+        &quot;laudoPdf&quot;: null
+      },
+      {
+        &quot;sequencial&quot;: 2,
+        &quot;localApoiado&quot;: &quot;02&quot;,
+        &quot;protocoloApoiado&quot;: 987655,
+        &quot;pacienteNome&quot;: &quot;Maria Oliveira&quot;,
+        &quot;erros&quot;: [],
+        &quot;exames&quot;: [ /* ... exames do protocolo 2 ... */ ],
+        &quot;laudoPdf&quot;: null
+      }
+    ]
+  }
+}</p>
+<h2 id='bbc0aff806'>```</h2><h5 id='estruturas-de-dados-corpo-da-resposta-campo-data-2'>Estruturas de Dados (Corpo da Resposta - campo data)</h5><h6 id='protocoloretorno'>ProtocoloRetorno</h6>
+<ul>
+<li>Representa o resultado da consulta para um protocolo específico dentro do lote.</li>
+<li><strong>Exemplo (Sucesso):</strong>
+<code>json
+{
+&quot;sequencial&quot;: 1,
+&quot;localApoiado&quot;: &quot;01&quot;,
+&quot;protocoloApoiado&quot;: 987654,
+&quot;pacienteNome&quot;: &quot;João da Silva&quot;,
+&quot;erros&quot;: [],
+&quot;exames&quot;: [ { /* ... Objeto ExameRetorno ... */ } ],
+&quot;laudoPdf&quot;: null
+}
+</code></li>
+<li><strong>Exemplo (Erro):</strong>
+<code>json
+{
+&quot;sequencial&quot;: 2,
+&quot;localApoiado&quot;: &quot;02&quot;,
+&quot;protocoloApoiado&quot;: 987655,
+&quot;pacienteNome&quot;: null,
+&quot;erros&quot;: [ &quot;Solicitação não encontrada para a identificação 123|2024070501|02|987655.&quot; ],
+&quot;exames&quot;: [],
+&quot;laudoPdf&quot;: null
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome               | Tipo    | Obrigatório | Descrição                                                    | Modelo Relacionado                                |
+| ------------------ | ------- | ----------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| sequencial       | integer | Sim         | Número sequencial do protocolo original (enviado na requisição) para correlação. |                                                   |
+| localApoiado     | string  | Sim         | Código identificador do local de coleta no apoiado, referente ao protocolo original. |                                                   |
+| protocoloApoiado | integer | Sim         | Número identificador do protocolo no apoiado, referente ao protocolo original. |                                                   |
+| pacienteNome     | string  | Não         | Nome do paciente associado ao protocolo encontrado. Pode ser nulo se o protocolo não for encontrado. |                                                   |
+| erros            | array   | Sim         | Lista (pode ser vazia) de mensagens de erro específicas para a consulta deste protocolo. |                                                   |
+| exames           | array   | Sim         | Lista (pode ser vazia) contendo os resultados dos exames solicitados para este protocolo. | <a href="#exameretorno-response-resultados">ExameRetorno</a> |
+| laudoPdf         | string  | Não         | String Base64 contendo o PDF do laudo consolidado para os exames deste protocolo se o parâmetro [<a href="https://dev.azure.com/gruposym/Autolac/_wiki/wikis/Autolac.wiki?wikiVersion=GBwikiMaster&amp;pagePath=/Autolac/Configura%C3%A7%C3%B5es/Sistema/Par%C3%A2metros/Integra%C3%A7%C3%A3o%20com%20Apoio%20e%20Apoiado&amp;anchor=configuracao_webservice">Integração com Apoio e Apoiado</a>] &gt; Usa a geração de laudo em PDF?] estiver marcado e a configuração do cadastro Apoiado indicar que não retorna o PDF por exame, caso contrário nulo. |                                                   |</li>
+</ul>
+<h6 id='exameretorno'>ExameRetorno</h6>
+<ul>
+<li>Representa o resultado de um exame específico consultado dentro de um protocolo.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;exameApoioCodigo&quot;: &quot;GLI&quot;,
+&quot;exameApoioDescricao&quot;: &quot;Glicose&quot;,
+&quot;dataHoraLiberacao&quot;: &quot;2024-07-05T10:30:00&quot;,
+&quot;observacao&quot;: &quot;Q29sZXRhIHJlYWxpemFkYSBlbSBqZWp1bS4=&quot;,
+&quot;resultadoEmPdf&quot;: false,
+&quot;resultadoPdf&quot;: null,
+&quot;componentes&quot;: [ { /* ... Objeto ComponenteRetorno ... */ } ],
+&quot;responsavel&quot;: { /* ... Objeto ResponsavelRetorno ... */ }
+}
+</code></li>
+<li><strong>Propriedades:</strong></li>
+</ul>
+
+<p>| Nome                  | Tipo    | Obrigatório | Descrição                                                                                                                            | Modelo Relacionado                         |
+  | --------------------- | ------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+  | exameApoioCodigo    | string  | Sim         | Código do exame no laboratório de apoio (ou TUSS).                                                                                   |                                            |
+  | exameApoioDescricao | string  | Sim         | Descrição do exame.                                                                                                                  |                                            |
+  | dataHoraLiberacao   | datetime| Não         | Data e hora em que o resultado do exame foi liberado/digitado no Autolac (formato ISO 8601). Pode ser nulo se ainda não liberado.      |                                            |
+  | observacao            | string  | Não         | Observações específicas registradas para este exame na solicitação. Codificado em Base64.                                            |                                            |
+  | resultadoEmPdf        | boolean | Sim         | Se a configuração do Apoiado indicar retorno de PDF por exame e o exame é do tipo PDF, o conteúdo do PDF será retornado (true). Caso contrário, não será retornado PDF por exame (false). |                                            |
+  | resultadoPdf          | string  | Não         | PDF do resultado apenas deste exame, se a configuração do Apoiado indicar retorno de PDF por exame e a indicação anterior for positiva (ou seja, o exame é do tipo PDF) ou a opção por exame e consolidado estejam desmarcados, codificado em Base64, ou nulo. |                                            |
+  | componentes           | array   | Sim         | Lista (pode ser vazia se resultadoEmPdf for true) dos componentes do exame com seus resultados.                                  | <a href="#componenteretorno-response-resultados">ComponenteRetorno</a> |
+  | responsavel           | object  | Não         | Dados do profissional responsável pela liberação/conferência do resultado deste exame.                                               | <a href="#responsavelretorno-response-resultados">ResponsavelRetorno</a> |</p>
+<h6 id='componenteretorno'>ComponenteRetorno</h6>
+<ul>
+<li>Representa o resultado de um componente específico de um exame.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;componenteApoioId&quot;: 101,
+&quot;modoPreenchimentoResultado&quot;: &quot;Informado&quot;,
+&quot;formatoResultado&quot;: &quot;Numérico&quot;,
+&quot;codigo&quot;: &quot;GLI&quot;,
+&quot;resultado&quot;: &quot;OTU=&quot;,
+&quot;referencia&quot;: { /* ... Objeto ReferenciaRetorno ... */ },
+&quot;reguaReferencial&quot;: { /* ... Objeto ReguaReferencialRetorno ... */ }
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome                       | Tipo    | Obrigatório | Descrição                                                                                                                            | Modelo Relacionado                             |
+| -------------------------- | ------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- |
+| componenteApoioId        | integer | Sim         | Identificador único do componente.                                                                                                 |                                                |
+| modoPreenchimentoResultado | string  | Sim         | Tipo do resultado esperado para o componente. (Informado, Calculado, Inform/Calc).                                                 |                                                |
+| formatoResultado         | string  | Sim         | Tipo do resultado do componente (<a href="#tipos-de-componentes">Tipos de Componentes</a>).                             |                                                |
+| codigo                   | string  | Não         | Código/Sigla do componente.                                                                                                          |                                                |
+| resultado                | string  | Sim         | Valor do resultado do componente, codificado em Base64.                                                                              |                                                |
+| referencia               | object  | Não         | Detalhes dos valores de referência vinculados ao resultado deste componente.                                                         | <a href="#referenciaretorno">ReferenciaRetorno</a> |
+| reguaReferencial         | object  | Não         | Detalhes da régua referencial vinculada ao resultado deste componente (Componentes numéricos com referência vinculada).                | <a href="#reguareferencialretorno">ReguaReferencialRetorno</a> |</li>
+</ul>
+<h6 id='tipos-de-componentes'>Tipos de Componentes</h6>
+<table><thead>
+<tr>
+<th>Nome</th>
+<th>Tipo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Numérico</td>
+<td>Número</td>
+</tr>
+<tr>
+<td>Descrição Digitada</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>Descrição Padrão</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>Germe</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>Parasita</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>Código/Descrição</td>
+<td>Texto</td>
+</tr>
+<tr>
+<td>Texto Digitado</td>
+<td>Texto (longo)</td>
+</tr>
+<tr>
+<td>Texto Padrão</td>
+<td>Texto (longo)</td>
+</tr>
+<tr>
+<td>Texto Formatado</td>
+<td>Texto (Código RTF)</td>
+</tr>
+<tr>
+<td>Antimicrobiano</td>
+<td>Texto (longo)</td>
+</tr>
+<tr>
+<td>Imagem</td>
+<td>Base64</td>
+</tr>
+</tbody></table>
+<h6 id='referenciaretorno'>ReferenciaRetorno</h6>
+<ul>
+<li>Representa os valores de referência associados a um componente de exame.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;referenciaId&quot;: 50,
+&quot;sexo&quot;: &quot;Ambos&quot;,
+&quot;idadeMinima&quot;: { &quot;tipo&quot;: &quot;Dia(s)&quot;, &quot;valor&quot;: 0 },
+&quot;idadeMaxima&quot;: { &quot;tipo&quot;: &quot;Ano(s)&quot;, &quot;valor&quot;: 999 },
+&quot;valorMinimo&quot;: 70.0,
+&quot;valorMaximo&quot;: 99.0,
+&quot;valorTexto&quot;: null,
+&quot;referenciaTexto&quot;: &quot;NzAgYSA5OSBtZy9kTA==&quot;,
+&quot;unidade&quot;: &quot;U/mL&quot;,
+&quot;metodo&quot;: &quot;RW56aW3DoXRpY28=&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome            | Tipo    | Obrigatório | Descrição                                                                    |
+| --------------- | ------- | ----------- | ---------------------------------------------------------------------------- |
+| referenciaId  | integer | Sim         | ID da referência utilizada (Controle interno do apoio).                      |
+| sexo          | string  | Sim         | Sexo ao qual a referência se aplica (Ambos, Masculino, Feminino).        |
+| idadeMinima.tipo| string| Sim         | Tipo da idade mínima da referência (dia(s), mês(es), ano(s)).                  |
+| idadeMinima.valor| integer| Sim         | Idade mínima para a qual a referência se aplica.                             |
+| idadeMaxima.tipo| string| Sim         | Tipo da idade máxima da referência (dia(s), mês(es), ano(s)).                  |
+| idadeMaxima.valor| integer| Sim         | Idade máxima para a qual a referência se aplica.                             |
+| valorMinimo   | number  | Não         | Limite inferior do intervalo de referência numérico.                           |
+| valorMaximo   | number  | Não         | Limite superior do intervalo de referência numérico.                           |
+| valorTexto    | string  | Não         | Valor de referência para textos. Codificado em Base64.                         |
+| referenciaTexto| string | Não         | Texto descritivo completo da referência. Codificado em Base64.                 |
+| unidade       | string  | Não         | Unidade associado a referência.                                                |
+| metodo        | string  | Não         | Método associado a referência. Codificado em Base64.                           |</li>
+</ul>
+<h6 id='reguareferencialretorno'>ReguaReferencialRetorno</h6>
+<ul>
+<li>Representa a régua referencial do resultado, contendo o valor percentual do resultado dentro da referência, e a imagem da régua em formato bmp e rtf.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;valor&quot;: 10,
+&quot;imagem&quot;: &quot;BASE64_DE_IMAGEM_BMP_DA_REGUA&quot;,
+&quot;rtf&quot;: &quot;BASE64_DE_IMAGEM_RTF_DA_REGUA&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome    | Tipo    | Obrigatório | Descrição                                                                 |
+| ------- | ------- | ----------- | ------------------------------------------------------------------------- |
+| valor | integer | Sim         | Valor da régua referencial.                                               |
+| imagem| string  | Sim         | Imagem em formato BMP. Codificado em Base64.                              |
+| rtf   | string  | Sim         | Imagem em formato RTF. Codificado em Base64.                              |</li>
+</ul>
+<h6 id='responsavelretorno'>ResponsavelRetorno</h6>
+<ul>
+<li>Representa o profissional que liberou/conferiu o resultado do exame.</li>
+<li><strong>Exemplo:</strong>
+<code>json
+{
+&quot;nome&quot;: &quot;Dr. Carlos Andrade&quot;,
+&quot;conselho&quot;: &quot;CRBM&quot;,
+&quot;conselhoUf&quot;: &quot;SP&quot;,
+&quot;conselhoNumero&quot;: &quot;12345&quot;
+}
+</code></li>
+<li><strong>Propriedades:</strong>
+| Nome           | Tipo   | Obrigatório | Descrição                                       |
+| -------------- | ------ | ----------- | ----------------------------------------------- |
+| nome         | string | Sim         | Nome completo do profissional responsável.      |
+| conselho     | string | Não         | Sigla do conselho profissional (ex: CRM, CRBM). |
+| conselhoUf   | string | Não         | UF do conselho profissional.                    |
+| conselhoNumero| string | Não         | Número de registro no conselho profissional.    |</li>
+</ul>
+
+<hr>
+<h5 id='falha-outros-status-codes-4'>Falha (Outros Status Codes)</h5>
+<ul>
+<li>Além do sucesso (200 OK, mesmo com falhas parciais no lote), a API pode retornar os seguintes códigos de erro principais, seguindo o <a href="#result">Result</a>:
+
+<ul>
+<li><strong>400 Bad Request</strong>: A requisição está malformada (ex: JSON inválido).</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 400,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Requisição inválida. Verifique o formato do JSON.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>401 Unauthorized</strong>: Token JWT ausente, inválido ou expirado.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 401,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Unauthorized&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>403 Forbidden</strong>: O usuário autenticado não tem permissão para a operação.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 403,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Acesso Negado&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+<li><strong>422 Unprocessable Entity</strong>: Erros de validação que impedem o processamento do lote como um todo (detalhes em data.erros do ResultadoLoteRetorno, mesmo com statusCode 200 e success false).</li>
+<li>Exemplo (Erro de validação geral do lote):
+<code>json
+{
+  &quot;statusCode&quot;: 422, // Ou 200 com success: false
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Lote não processado. Parâmetros inválidos.&quot;,
+  &quot;data&quot;: {
+      &quot;codigoApoiado&quot;: 123,
+      &quot;codigoLote&quot;: 2024070501,
+      &quot;erros&quot;: [&quot;Protocolos não informados.&quot;], // Exemplo de erro de lote
+      &quot;protocolos&quot;: []
+  }
+}
+</code></li>
+<li><strong>500 Internal Server Error</strong>: Falha inesperada durante o processamento no servidor.</li>
+<li>Exemplo:
+<code>json
+{
+  &quot;statusCode&quot;: 500,
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Ocorreu um erro interno no servidor.&quot;,
+  &quot;data&quot;: null
+}
+</code></li>
+</ul></li>
+</ul>
+<h5 id='mensagens-de-retorno-4'>Mensagens de Retorno</h5><h6 id='erros-das-validacoes-iniciais-do-lote-geralmente-em-data-erros-do-resultadoloteretorno-ou-na-message-principal-se-o-lote-nao-puder-ser-processado'>Erros das validações iniciais do Lote (geralmente em data.erros do ResultadoLoteRetorno ou na message principal se o lote não puder ser processado)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Parâmetro(s) de consulta não informado(s).</td>
+<td style="text-align: left">O corpo da requisição (lote) está nulo ou vazio.</td>
+</tr>
+<tr>
+<td style="text-align: left">Laboratório apoiado não informado.</td>
+<td style="text-align: left">O campo codigoApoiado no lote não foi fornecido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Código do laboratório apoiado inválido.</td>
+<td style="text-align: left">O campo codigoApoiado no lote é menor ou igual a zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">Número do lote não informado.</td>
+<td style="text-align: left">O campo codigoLote no lote não foi fornecido.</td>
+</tr>
+<tr>
+<td style="text-align: left">Número do lote inválido.</td>
+<td style="text-align: left">O campo codigoLote no lote é menor ou igual a zero.</td>
+</tr>
+<tr>
+<td style="text-align: left">Protocolos não informados.</td>
+<td style="text-align: left">A lista protocolos no lote está nula ou vazia.</td>
+</tr>
+<tr>
+<td style="text-align: left">Quantidade máxima de protocolos por lote excedida ({0}). Limite: {1}.</td>
+<td style="text-align: left">A lista protocolos contém mais itens que o permitido (o limite é geralmente 1000).</td>
+</tr>
+<tr>
+<td style="text-align: left">Existem protocolos no lote com sequenciais duplicados.</td>
+<td style="text-align: left">A lista protocolos contém itens com o mesmo valor no campo sequencial.</td>
+</tr>
+<tr>
+<td style="text-align: left">Existem protocolos no lote com sequenciais inválidos (menor ou igual a zero).</td>
+<td style="text-align: left">A lista protocolos contém itens com sequencial &lt;= 0.</td>
+</tr>
+<tr>
+<td style="text-align: left">Laboratório apoiado não encontrado.</td>
+<td style="text-align: left">O codigoApoiado fornecido não corresponde a um laboratório apoiado válido no sistema.</td>
+</tr>
+<tr>
+<td style="text-align: left">Id do lab. apoiado não encontrado no contexto da requisição HTTP.</td>
+<td style="text-align: left">Erro interno ao obter o ID do apoiado a partir do token JWT.</td>
+</tr>
+<tr>
+<td style="text-align: left">Identificação do laboratório apoiado difere da utilizada nas credenciais de login do InterAutolac.</td>
+<td style="text-align: left">O codigoApoiado no lote não corresponde ao ID do apoiado associado ao token JWT da requisição.</td>
+</tr>
+<tr>
+<td style="text-align: left">Lote não encontrado no histórico de importação.</td>
+<td style="text-align: left">O lote (codigoApoiado + codigoLote) não foi encontrado no histórico, indicando que talvez não tenha sido integrado via /Pedidos.</td>
+</tr>
+</tbody></table>
+<h6 id='erros-durante-a-consulta-em-data-protocolos-n-erros'>Erros durante a Consulta (em data.protocolos[n].erros)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Solicitação não encontrada para a identificação {0}. (Mensagem formatada com o identificador)</td>
+<td style="text-align: left">Não foi encontrada uma solicitação correspondente ao localApoiado e protocoloApoiado dentro do lote/apoiado especificado.</td>
+</tr>
+<tr>
+<td style="text-align: left">Erro ao buscar resultados para o exame X.</td>
+<td style="text-align: left">Falha específica ao tentar recuperar os dados de um exame dentro de um protocolo (ex: exame não encontrado na solicitação, erro de banco).</td>
+</tr>
+<tr>
+<td style="text-align: left">Falha ao gerar PDF do laudo/exame.</td>
+<td style="text-align: left">Problema durante a geração do PDF (se solicitado/aplicável).</td>
+</tr>
+</tbody></table>
+<h6 id='mensagens-gerais-no-campo-message-da-resposta-principal-do-result-2'>Mensagens gerais (no campo message da resposta principal do <a href="#result">Result</a>)</h6>
+<table><thead>
+<tr>
+<th style="text-align: left">Mensagem retornada</th>
+<th style="text-align: left">Situação Geral</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Lote não processado. Parâmetros inválidos.</td>
+<td style="text-align: left">Uma ou mais validações iniciais do lote falharam (detalhes em data.erros).</td>
+</tr>
+<tr>
+<td style="text-align: left">Falha ao consultar resultados.</td>
+<td style="text-align: left">Erro genérico indicando que a consulta não foi totalmente bem-sucedida (pode haver erros em data.protocolos[n].erros).</td>
+</tr>
+<tr>
+<td style="text-align: left">Consulta realizada com sucesso.</td>
+<td style="text-align: left">Todos os protocolos/exames solicitados foram encontrados e processados.</td>
+</tr>
+<tr>
+<td style="text-align: left">Consulta realizada com erros parciais.</td>
+<td style="text-align: left">Alguns protocolos/exames não puderam ser encontrados ou processados (ver detalhes em data).</td>
+</tr>
+<tr>
+<td style="text-align: left"><em>Outras exceções inesperadas</em></td>
+<td style="text-align: left">Erros não previstos capturados pela aplicação (Ex: 500 Internal Server Error).</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
