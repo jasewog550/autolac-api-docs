@@ -1,6 +1,25 @@
 ---
-titulo: Especificação da API Autolac para parceiros
-descricao: Descreve as regras para integração entre sistemas parceiros e o Autolac
+title: Documentação da API Autolac para Parceiros
+
+language_tabs: # Define as abas de linguagem no painel direito
+  - json: Resposta
+
+toc_footers:
+  - <a href='#'>Voltar para o Topo</a>
+  - <a href='https://github.com/slatedocs/slate'>Documentação criada com Slate</a>
+
+# Adicione todos os seus blocos de código que estarão no painel direito aqui
+# Isso ajuda o Slate a saber quais linguagens destacar
+includes:
+  - errors
+
+search: true
+
+code_clipboard: true
+
+meta:
+  - name: description
+    content: Descreve as regras para integração entre sistemas parceiros e o Autolac
 ---
 
 [TOC]
